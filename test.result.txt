@@ -1,0 +1,566 @@
+No files changed, compilation skipped
+
+Ran 5 tests for test/Crowdfunding.t.sol:ProjectXTest
+[PASS] test_createQuery() (gas: 1996624)
+Logs:
+  初始化： 
+    当前时间 :  1
+    factory Addr :  0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    projectAddrCanExceed :  0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    projectAddrNotExceed :  0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+  projectOwner 余额 =  0
+  addrJack 余额 =  500
+  addrTom  余额 =  600
+  -------------
+  新的项目地址 =  0xDDc10602782af652bB913f7bdE1fD82981Db7dd9
+  查询明细：
+    owner_ :  0x0000000000000000000000000000000000030D42
+    title_ :  buy 555 banana
+    deadline_ :  61
+    goal_ :  100
+    descUrl_ :  http://hello.com/banana.json
+    state_ :  1
+  queryDonate :  0
+
+Traces:
+  [6751828] ProjectXTest::setUp()
+    ├─ [2747182] → new ProjectFactoryContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 13721 bytes of code
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 2000 apple", 61, 100, true, "http://hello.com/apple.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 2000 apple")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]
+    ├─ [1924600] ProjectFactoryContract::createProject("buy 1000 tree", 61, 100, false, "http://hello.com/apple.json")
+    │   ├─ [1840919] → new ProjectInfoContract@0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 1000 tree")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("初始化： ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  当前时间 : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  factory Addr : ", ProjectFactoryContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrCanExceed : ", ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrNotExceed : ", ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000006006, 500)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000007007, 600)
+    │   └─ ← [Return]
+    ├─ [0] console::log("projectOwner 余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrJack 余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrTom  余额 = ", 600) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("-------------") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [1996624] ProjectXTest::test_createQuery()
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000030D42)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 555 banana", 61, 100, true, "http://hello.com/banana.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0xDDc10602782af652bB913f7bdE1fD82981Db7dd9
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000030D42, goal: 100, title: "buy 555 banana")
+    │   │   ├─  storage changes:
+    │   │   │   @ 3: 0 → 100
+    │   │   │   @ 1: 0 → 0x627579203535352062616e616e6100000000000000000000000000000000001c
+    │   │   │   @ 4: 0 → 1
+    │   │   │   @ 2: 0 → 61
+    │   │   │   @ 5: 0 → 0x687474703a2f2f68656c6c6f2e636f6d2f62616e616e612e6a736f6e00000038
+    │   │   │   @ 0: 0 → 200002
+    │   │   │   @ 7: 0 → 1
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   ├─  storage changes:
+    │   │   @ 0xef50f7fbf88377a7699755d4b81ea5736645ede46243f650e13038909f5ef976: 0 → 0x000000000000000000000000ddc10602782af652bb913f7bde1fd82981db7dd9
+    │   │   @ 0xdc168c35dff6d4bc573a93840ae1ecb3ee12fd9d64a52f0b58cdf0e7d3f24462: 0 → 0x000000000000000000000000ddc10602782af652bb913f7bde1fd82981db7dd9
+    │   │   @ 0xc26bf528b3ca51ab6b35aad19bdb74661ee17bd94aa855a55f13097346746aee: 0 → 1
+    │   └─ ← [Return] ProjectInfoContract: [0xDDc10602782af652bB913f7bdE1fD82981Db7dd9]
+    ├─ [0] console::log("新的项目地址 = ", ProjectInfoContract: [0xDDc10602782af652bB913f7bdE1fD82981Db7dd9]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [3511] ProjectInfoContract::queryInfo() [staticcall]
+    │   └─ ← [Return] 0x0000000000000000000000000000000000030D42, "buy 555 banana", 61, 100, "http://hello.com/banana.json", 1
+    ├─ [0] console::log("查询明细：") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  owner_ : ", 0x0000000000000000000000000000000000030D42) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  title_ : ", "buy 555 banana") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  deadline_ : ", 61) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  goal_ : ", 100) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  descUrl_ : ", "http://hello.com/banana.json") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  state_ : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [2621] ProjectInfoContract::queryDonate() [staticcall]
+    │   └─ ← [Return] 0
+    ├─ [0] console::log("queryDonate : ", 0) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+[PASS] test_deadlineRefund() (gas: 105552)
+Logs:
+  初始化： 
+    当前时间 :  1
+    factory Addr :  0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    projectAddrCanExceed :  0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    projectAddrNotExceed :  0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+  projectOwner 余额 =  0
+  addrJack 余额 =  500
+  addrTom  余额 =  600
+  -------------
+  捐款后，jack的余额 =  440
+  退款后，jack的余额 =  500
+  退款后，项目的余额 =  0
+
+Traces:
+  [6751828] ProjectXTest::setUp()
+    ├─ [2747182] → new ProjectFactoryContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 13721 bytes of code
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 2000 apple", 61, 100, true, "http://hello.com/apple.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 2000 apple")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]
+    ├─ [1924600] ProjectFactoryContract::createProject("buy 1000 tree", 61, 100, false, "http://hello.com/apple.json")
+    │   ├─ [1840919] → new ProjectInfoContract@0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 1000 tree")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("初始化： ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  当前时间 : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  factory Addr : ", ProjectFactoryContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrCanExceed : ", ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrNotExceed : ", ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000006006, 500)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000007007, 600)
+    │   └─ ← [Return]
+    ├─ [0] console::log("projectOwner 余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrJack 余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrTom  余额 = ", 600) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("-------------") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [125452] ProjectXTest::test_deadlineRefund()
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [56919] ProjectInfoContract::donate{value: 10}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 10, sumMoney: 10)
+    │   ├─  storage changes:
+    │   │   @ 6: 0 → 10
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 0 → 10
+    │   └─ ← [Stop]
+    ├─ [5119] ProjectInfoContract::donate{value: 20}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 20, sumMoney: 30)
+    │   ├─  storage changes:
+    │   │   @ 6: 10 → 30
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 10 → 30
+    │   └─ ← [Stop]
+    ├─ [5119] ProjectInfoContract::donate{value: 30}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 30, sumMoney: 60)
+    │   ├─  storage changes:
+    │   │   @ 6: 30 → 60
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 30 → 60
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("捐款后，jack的余额 = ", 440) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::warp(301)
+    │   └─ ← [Return]
+    ├─ [6046] ProjectInfoContract::checkState()
+    │   ├─ emit StateChanged(stateFrom: 1, stateTo: 3)
+    │   ├─  storage changes:
+    │   │   @ 7: 1 → 3
+    │   └─ ← [Return] 3
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [9503] ProjectInfoContract::refund()
+    │   ├─ [0] 0x0000000000000000000000000000000000006006::fallback{value: 60}()
+    │   │   └─ ← [Stop]
+    │   ├─ emit Refunded(user: 0x0000000000000000000000000000000000006006, money: 60)
+    │   ├─  storage changes:
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 60 → 0
+    │   └─ ← [Stop]
+    ├─ [0] console::log("退款后，jack的余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("退款后，项目的余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+[PASS] test_donateCanExceed() (gas: 190980)
+Logs:
+  初始化： 
+    当前时间 :  1
+    factory Addr :  0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    projectAddrCanExceed :  0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    projectAddrNotExceed :  0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+  projectOwner 余额 =  0
+  addrJack 余额 =  500
+  addrTom  余额 =  600
+  -------------
+  donate之后，addrJack 余额 =  478
+  donate之后，addrTom  余额 =  569
+  addrJack  出款 =  22
+  donateTom 出款 =  31
+  钱还不够，当前state =  1
+  jack又出钱了。钱够了，当前state =  2
+  取款前，owner余额 =  0
+  取款后，owner余额 =  141
+
+Traces:
+  [6751828] ProjectXTest::setUp()
+    ├─ [2747182] → new ProjectFactoryContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 13721 bytes of code
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 2000 apple", 61, 100, true, "http://hello.com/apple.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 2000 apple")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]
+    ├─ [1924600] ProjectFactoryContract::createProject("buy 1000 tree", 61, 100, false, "http://hello.com/apple.json")
+    │   ├─ [1840919] → new ProjectInfoContract@0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 1000 tree")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("初始化： ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  当前时间 : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  factory Addr : ", ProjectFactoryContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrCanExceed : ", ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrNotExceed : ", ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000006006, 500)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000007007, 600)
+    │   └─ ← [Return]
+    ├─ [0] console::log("projectOwner 余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrJack 余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrTom  余额 = ", 600) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("-------------") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [190980] ProjectXTest::test_donateCanExceed()
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [56919] ProjectInfoContract::donate{value: 22}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 22, sumMoney: 22)
+    │   ├─  storage changes:
+    │   │   @ 6: 0 → 22
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 0 → 22
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000007007)
+    │   └─ ← [Return]
+    ├─ [27019] ProjectInfoContract::donate{value: 31}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000007007, money: 31, sumMoney: 53)
+    │   ├─  storage changes:
+    │   │   @ 0x74e806ecd091f51bb54a2b3e993cb2eb10ed8aa65014d1c2443d3bbb7e41c367: 0 → 31
+    │   │   @ 6: 22 → 53
+    │   └─ ← [Stop]
+    ├─ [0] console::log("donate之后，addrJack 余额 = ", 478) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("donate之后，addrTom  余额 = ", 569) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [621] ProjectInfoContract::queryDonate() [staticcall]
+    │   └─ ← [Return] 22
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000007007)
+    │   └─ ← [Return]
+    ├─ [621] ProjectInfoContract::queryDonate() [staticcall]
+    │   └─ ← [Return] 31
+    ├─ [0] console::log("addrJack  出款 = ", 22) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("donateTom 出款 = ", 31) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1088] ProjectInfoContract::checkState()
+    │   └─ ← [Return] 1
+    ├─ [0] console::log("钱还不够，当前state = ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [9949] ProjectInfoContract::donate{value: 88}()
+    │   ├─ emit StateChanged(stateFrom: 1, stateTo: 2)
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 88, sumMoney: 141)
+    │   ├─  storage changes:
+    │   │   @ 7: 1 → 2
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 22 → 110
+    │   │   @ 6: 53 → 141
+    │   └─ ← [Stop]
+    ├─ [838] ProjectInfoContract::checkState()
+    │   └─ ← [Return] 2
+    ├─ [0] console::log("jack又出钱了。钱够了，当前state = ", 2) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("取款前，owner余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [38700] ProjectInfoContract::withdraw()
+    │   ├─ emit StateChanged(stateFrom: 2, stateTo: 4)
+    │   ├─ [0] 0x0000000000000000000000000000000000003003::fallback{value: 141}()
+    │   │   └─ ← [Stop]
+    │   ├─ emit Withdrawed(user: 0x0000000000000000000000000000000000003003, money: 141)
+    │   ├─  storage changes:
+    │   │   @ 7: 2 → 4
+    │   └─ ← [Stop]
+    ├─ [0] console::log("取款后，owner余额 = ", 141) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+[PASS] test_donateNotExceed() (gas: 168747)
+Logs:
+  初始化： 
+    当前时间 :  1
+    factory Addr :  0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    projectAddrCanExceed :  0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    projectAddrNotExceed :  0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+  projectOwner 余额 =  0
+  addrJack 余额 =  500
+  addrTom  余额 =  600
+  -------------
+  捐款后，jack的余额 =  400
+  在满了之后，项目的余额 =  100
+  取款前，owner的余额 =  0
+  取款后，owner的余额 =  100
+
+Traces:
+  [6751828] ProjectXTest::setUp()
+    ├─ [2747182] → new ProjectFactoryContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 13721 bytes of code
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 2000 apple", 61, 100, true, "http://hello.com/apple.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 2000 apple")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]
+    ├─ [1924600] ProjectFactoryContract::createProject("buy 1000 tree", 61, 100, false, "http://hello.com/apple.json")
+    │   ├─ [1840919] → new ProjectInfoContract@0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 1000 tree")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("初始化： ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  当前时间 : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  factory Addr : ", ProjectFactoryContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrCanExceed : ", ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrNotExceed : ", ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000006006, 500)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000007007, 600)
+    │   └─ ← [Return]
+    ├─ [0] console::log("projectOwner 余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrJack 余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrTom  余额 = ", 600) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("-------------") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [168747] ProjectXTest::test_donateNotExceed()
+    ├─ [2455] ProjectInfoContract::queryGoal() [staticcall]
+    │   └─ ← [Return] 100
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [54941] ProjectInfoContract::donate{value: 33}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 33, sumMoney: 33)
+    │   ├─  storage changes:
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 0 → 33
+    │   │   @ 6: 0 → 33
+    │   └─ ← [Stop]
+    ├─ [5141] ProjectInfoContract::donate{value: 41}()
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 41, sumMoney: 74)
+    │   ├─  storage changes:
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 33 → 74
+    │   │   @ 6: 33 → 74
+    │   └─ ← [Stop]
+    ├─ [18844] ProjectInfoContract::donate{value: 56}()
+    │   ├─ emit StateChanged(stateFrom: 1, stateTo: 2)
+    │   ├─ emit Donated(user: 0x0000000000000000000000000000000000006006, money: 26, sumMoney: 100)
+    │   ├─ [0] 0x0000000000000000000000000000000000006006::fallback{value: 30}()
+    │   │   └─ ← [Stop]
+    │   ├─ emit Refunded(user: 0x0000000000000000000000000000000000006006, money: 30)
+    │   ├─  storage changes:
+    │   │   @ 7: 1 → 2
+    │   │   @ 6: 74 → 100
+    │   │   @ 0x439c67e40c4851395dbfe81e758b5e456ee6208d049e269ae25d303386f48dcb: 74 → 100
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("捐款后，jack的余额 = ", 400) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("在满了之后，项目的余额 = ", 100) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("取款前，owner的余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [38700] ProjectInfoContract::withdraw()
+    │   ├─ emit StateChanged(stateFrom: 2, stateTo: 4)
+    │   ├─ [0] 0x0000000000000000000000000000000000003003::fallback{value: 100}()
+    │   │   └─ ← [Stop]
+    │   ├─ emit Withdrawed(user: 0x0000000000000000000000000000000000003003, money: 100)
+    │   ├─  storage changes:
+    │   │   @ 7: 2 → 4
+    │   └─ ← [Stop]
+    ├─ [0] console::log("取款后，owner的余额 = ", 100) [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+[PASS] test_factory() (gas: 123166)
+Logs:
+  初始化： 
+    当前时间 :  1
+    factory Addr :  0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    projectAddrCanExceed :  0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    projectAddrNotExceed :  0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+  projectOwner 余额 =  0
+  addrJack 余额 =  500
+  addrTom  余额 =  600
+  -------------
+   jack 没有项目。
+   projectOwner 有项目。 
+  项目：   title= buy 2000 apple goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x104fbc016f4bb334d775a19e8a6510109ac63e00 descUrl= http://hello.com/apple.json
+  项目：   title= buy 1000 tree goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x037eda3adb1198021a9b2e88c22b464fd38db3f3 descUrl= http://hello.com/apple.json
+
+Traces:
+  [6751828] ProjectXTest::setUp()
+    ├─ [2747182] → new ProjectFactoryContract@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 13721 bytes of code
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::startPrank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [1966400] ProjectFactoryContract::createProject("buy 2000 apple", 61, 100, true, "http://hello.com/apple.json")
+    │   ├─ [1860819] → new ProjectInfoContract@0x104fBc016F4bb334D775a19E8A6510109AC63E00
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 2000 apple")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]
+    ├─ [1924600] ProjectFactoryContract::createProject("buy 1000 tree", 61, 100, false, "http://hello.com/apple.json")
+    │   ├─ [1840919] → new ProjectInfoContract@0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3
+    │   │   ├─ emit StateChanged(stateFrom: 0, stateTo: 1)
+    │   │   ├─ emit NewProject(owner: 0x0000000000000000000000000000000000003003, goal: 100, title: "buy 1000 tree")
+    │   │   └─ ← [Return] 8467 bytes of code
+    │   └─ ← [Return] ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] VM::stopPrank()
+    │   └─ ← [Return]
+    ├─ [0] console::log("初始化： ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  当前时间 : ", 1) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  factory Addr : ", ProjectFactoryContract: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrCanExceed : ", ProjectInfoContract: [0x104fBc016F4bb334D775a19E8A6510109AC63E00]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("  projectAddrNotExceed : ", ProjectInfoContract: [0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000003003, 0)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000006006, 500)
+    │   └─ ← [Return]
+    ├─ [0] VM::deal(0x0000000000000000000000000000000000007007, 600)
+    │   └─ ← [Return]
+    ├─ [0] console::log("projectOwner 余额 = ", 0) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrJack 余额 = ", 500) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("addrTom  余额 = ", 600) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("-------------") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+  [123166] ProjectXTest::test_factory()
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000006006)
+    │   └─ ← [Return]
+    ├─ [2892] ProjectFactoryContract::queryMyProject() [staticcall]
+    │   └─ ← [Return] []
+    ├─ [0] console::log(" jack 没有项目。") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::prank(0x0000000000000000000000000000000000003003)
+    │   └─ ← [Return]
+    ├─ [13362] ProjectFactoryContract::queryMyProject() [staticcall]
+    │   └─ ← [Return] [0x104fBc016F4bb334D775a19E8A6510109AC63E00, 0x037eDa3aDB1198021A9b2e88C22B464fD38db3f3]
+    ├─ [0] console::log(" projectOwner 有项目。 ") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [38634] ProjectInfoContract::toString() [staticcall]
+    │   └─ ← [Return] " title= buy 2000 apple goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x104fbc016f4bb334d775a19e8a6510109ac63e00 descUrl= http://hello.com/apple.json"
+    ├─ [0] console::log("项目： ", " title= buy 2000 apple goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x104fbc016f4bb334d775a19e8a6510109ac63e00 descUrl= http://hello.com/apple.json") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [38634] ProjectInfoContract::toString() [staticcall]
+    │   └─ ← [Return] " title= buy 1000 tree goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x037eda3adb1198021a9b2e88c22b464fd38db3f3 descUrl= http://hello.com/apple.json"
+    ├─ [0] console::log("项目： ", " title= buy 1000 tree goal= 100 owner= 0x0000000000000000000000000000000000003003 addr= 0x037eda3adb1198021a9b2e88c22b464fd38db3f3 descUrl= http://hello.com/apple.json") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 5.07ms (11.30ms CPU time)
+
+Ran 1 test suite in 194.72ms (5.07ms CPU time): 5 tests passed, 0 failed, 0 skipped (5 total tests)
