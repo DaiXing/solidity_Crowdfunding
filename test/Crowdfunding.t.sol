@@ -95,6 +95,7 @@ contract ProjectXTest is Test {
             "http://hello.com/banana.json"
         );
         console.log(unicode"新的项目地址 = ", projectAddr);
+        require(projectAddr > address(0), unicode"项目地址需要大于 0 ");
 
         // 转成合约。
         ProjectInfoContract projectInfo = ProjectInfoContract(projectAddr);
@@ -110,6 +111,7 @@ contract ProjectXTest is Test {
         ) = projectInfo.queryInfo();
         // 错误。不能打印枚举。
         // 错误。不支持多种类型混合。
+        // 把不同类型的值，分开打印。
         console.log(unicode"查询明细：");
         console.log("  owner_ : ", owner_);
         console.log("  title_ : ", title_);
@@ -161,7 +163,17 @@ contract ProjectXTest is Test {
         // 金额还没满。状态还没变。
         // project.refund();// 错误。[Revert] state not valid
         // project.withdraw(); // 错误。[Revert] state not valid
-
+        try project.refund() {
+            require(true, unicode"金额还没满。 不能refund");
+        } catch {
+            // 这里不看 具体错误
+            console.log(unicode"测试异常情况：金额还没满。 不能refund");
+        }
+        try project.withdraw() {
+            require(true, unicode"金额还没满。 不能withdraw");
+        } catch {
+            console.log(unicode"测试异常情况：金额还没满。 不能withdraw");
+        }
         // 继续出款。
         uint donateJack2 = 88;
         vm.prank(addrJack);

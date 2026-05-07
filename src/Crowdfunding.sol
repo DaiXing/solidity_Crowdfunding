@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.28;
 
+// 使用 remmaping 的路径
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
+// 直接使用 lib 路径。一样的。
+// import {Strings} from "openzeppelin-contracts/contracts/utils/Strings.sol";
 
 // 项目状态
 enum ProjectState {
