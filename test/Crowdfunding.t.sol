@@ -18,7 +18,7 @@ contract ProjectXTest is Test {
     address projectAddrCanExceed; // 金额可以超过。
     address projectAddrNotExceed; // 金额不能超过。
 
-    // 多个人。
+    // 多个人。 参与项目。
     address addrJack = address(0x6006);
     address addrTom = address(0x7007);
 
@@ -164,30 +164,46 @@ contract ProjectXTest is Test {
         // project.refund();// 错误。[Revert] state not valid
         // project.withdraw(); // 错误。[Revert] state not valid
         try project.refund() {
-            require(true, unicode"金额还没满。 不能refund");
+            revert(unicode"金额还没满。 不能refund");
         } catch {
             // 这里不看 具体错误
-            console.log(unicode"测试异常情况：金额还没满。 不能refund");
+            console.log(unicode"测试异常情况： 金额还没满。 不能refund");
         }
         try project.withdraw() {
-            require(true, unicode"金额还没满。 不能withdraw");
+            revert(unicode"金额还没满。 不能withdraw");
         } catch {
-            console.log(unicode"测试异常情况：金额还没满。 不能withdraw");
+            console.log(unicode"测试异常情况： 金额还没满。 不能withdraw");
         }
+        //========================
         // 继续出款。
         uint donateJack2 = 88;
         vm.prank(addrJack);
         project.donate{value: donateJack2}();
 
-        // 金额达到了。
+        // 金额达到了。 状态变为 Success
         ProjectState state2 = project.checkState();
         console.log(unicode"jack又出钱了。钱够了，当前state = ", uint(state2));
-        require(state2 == ProjectState.Success, "state not match");
+        require(state2 == ProjectState.Success, "state Success not match");
 
         // project.refund(); // 错误。 已经成功了，不能退款。 [Revert] state not valid
         // project.withdraw();// 错误。 [Revert] not owner
-
-        // 取款。
+        try project.refund() {
+            revert(unicode"金额达到了。不能 refund");
+        } catch {
+            console.log(unicode"测试异常情况： 金额达到了。不能 refund");
+        }
+        // 其他人不能取款。
+        vm.prank(addrJack);
+        // vm.prank(projectOwner);
+        try project.withdraw() {
+            revert(unicode"金额达到了。但是，其他人不能取款。");
+        } catch {
+            console.log(
+                unicode"测试异常情况： 金额达到了。但是，其他人不能取款。"
+            );
+        }
+        //========================
+        // 取款。 成功。
         console.log(unicode"取款前，owner余额 = ", projectOwner.balance);
         vm.prank(projectOwner);
         project.withdraw();
@@ -196,7 +212,7 @@ contract ProjectXTest is Test {
         // 判断金额相等。
         require(
             projectOwner.balance == (donateJack + donateTom + donateJack2),
-            "withdraw not match"
+            "owner withdraw not match"
         );
     }
 
@@ -214,6 +230,11 @@ contract ProjectXTest is Test {
         project.donate{value: 41}();
         project.donate{value: 56}(); // 有退款。 emit Refunded(addr: 0x0000000000000000000000000000000000006006, money: 30)
         // project.donate{value: 11}(); // 错误。金额已经满了。 [Revert] state not valid
+        try project.donate{value: 11}() {
+            revert(unicode"金额已经满了，就不能收款了。");
+        } catch {
+            console.log(unicode"测试异常情况： 金额已经满了，就不能收款了。");
+        }
         vm.stopPrank();
 
         console.log(unicode"捐款后，jack的余额 = ", addrJack.balance);
@@ -240,7 +261,7 @@ contract ProjectXTest is Test {
         require(goal == projectOwner.balance, "owner balance not match goal");
     }
 
-    // 测试时间过期了。 退款。
+    // 时间过期了。 退款。
     function test_deadlineRefund() public {
         ProjectInfoContract project = ProjectInfoContract(projectAddrCanExceed);
         uint jackBalanceBefore = addrJack.balance;
@@ -257,16 +278,26 @@ contract ProjectXTest is Test {
         // vm.skip(5 minutes); // 超时。 错误。没有skip函数。
         vm.warp(block.timestamp + 5 minutes); // 超时。
         ProjectState state1 = project.checkState();
-        assert(state1 == ProjectState.Failed);
+        console.log(unicode"超时后，状态为", uint(state1));
+        require(
+            state1 == ProjectState.Failed,
+            unicode"超时后，状态应该是 Failed"
+        );
 
         // 退款。
         vm.prank(addrJack);
         project.refund();
         console.log(unicode"退款后，jack的余额 = ", addrJack.balance);
-        assert(addrJack.balance == jackBalanceBefore);
+        require(
+            addrJack.balance == jackBalanceBefore,
+            unicode"退款后，jack的余额，应该不变"
+        );
 
         // 项目的钱，清空了。
         console.log(unicode"退款后，项目的余额 = ", address(project).balance);
-        assert(address(project).balance == 0);
+        require(
+            address(project).balance == 0,
+            unicode"退款后，项目余额应该是 0 "
+        );
     }
 }
