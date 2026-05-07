@@ -1,9 +1,13 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.28;
 
-import "forge-std/Test.sol";
-import "forge-std/console.sol";
-import "../src/Crowdfunding.sol";
+import {Test} from "forge-std/Test.sol";
+import {console} from "forge-std/console.sol";
+import {
+    ProjectState,
+    ProjectInfoContract,
+    ProjectFactoryContract
+} from "../src/Crowdfunding.sol";
 
 contract ProjectXTest is Test {
     // 工厂合约。

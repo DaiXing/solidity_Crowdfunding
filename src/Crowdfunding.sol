@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.28;
 
-import "@openzeppelin/contracts/utils/Strings.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 // 项目状态
 enum ProjectState {
@@ -68,8 +68,12 @@ contract ProjectInfoContract {
 
     // 状态机模式。
     modifier needState(ProjectState _state) {
-        require(state == _state, "state not valid");
+        _needState(_state);
         _;
+    }
+
+    function _needState(ProjectState _state) internal view {
+        require(state == _state, "state not valid");
     }
 
     // 转字符串。
