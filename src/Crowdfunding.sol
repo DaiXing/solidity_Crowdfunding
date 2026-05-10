@@ -177,12 +177,12 @@ contract ProjectInfoContract {
         if (state == ProjectState.Active) {
             if (address(this).balance >= goal) {
                 state = ProjectState.Success; // 成功了。
-                emit StateChanged(ProjectState.Active, state);
+                emit StateChanged(ProjectState.Success, state);
                 return state;
             }
             if (block.timestamp > deadline) {
                 state = ProjectState.Failed; // 失败了。
-                emit StateChanged(ProjectState.Active, state);
+                emit StateChanged(ProjectState.Failed, state);
                 return state;
             }
         }

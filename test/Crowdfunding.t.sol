@@ -9,6 +9,8 @@ import {
     ProjectFactoryContract
 } from "../src/Crowdfunding.sol";
 
+// 看report ，测试覆盖率，gas开销
+
 contract ProjectXTest is Test {
     // 工厂合约。
     ProjectFactoryContract public factory;
