@@ -16,6 +16,7 @@ enum ProjectState {
 }
 
 // 单个项目。 contract 比 struct 更好。
+// 把钱存工厂，也行。 此时，可以用 struct 。
 contract ProjectInfoContract {
     // 这些是基本信息。 可以聚合为 struct
     address owner; // 所有者。
